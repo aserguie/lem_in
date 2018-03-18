@@ -1,0 +1,16 @@
+# Map invalide avec 'doublon'
+1
+#commentaire_1
+##start
+A 1 2
+##middle
+B 2 3
+C 3 4
+##end
+D 3 4
+#commentaire_2
+A-B
+B-C
+#commentaire_3
+##end
+C-D

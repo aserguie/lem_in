@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:27:22 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/16 21:41:47 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/18 19:54:14 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,11 @@
 # include <limits.h>
 # include "../libft/inc/libft.h"
 
-typedef struct	s_cdll
+typedef struct			s_pipe
 {
-	int				data;
-	int				index;
-	int				target;
-	int				red;
-	int				green;
-	struct s_cdll	*next;
-	struct s_cdll	*prev;
-}				t_cdll;
-
-typedef struct	s_stack
-{
-	t_cdll		*first;
-	t_cdll		*last;
-	int			len;
-}				t_stack;
-
-typedef struct	s_set
-{
-	t_stack		sta_a;
-	t_stack		sta_b;
-	t_stack		inst;
-	t_stack		*stack_a;
-	t_stack		*stack_b;
-	t_stack		*instru;
-	int			color;
-	int			target;
-	int			aff_instru;
-	int			aff_stack;
-	int			frequence;
-}				t_set;
+	struct s_rooms		*to;
+	struct s_pipe		*next;
+}						t_pipe;
 
 typedef struct			s_rooms
 {
@@ -62,10 +35,17 @@ typedef struct			s_rooms
 	char				*y;
 	char				*rm_name;
 	int					rm_index;
-	int					nb_tunnel;
-	int					*tunnels;
+	int					visited;
+	struct s_rooms		*from;
+	t_pipe				*pipe;
 	struct s_rooms		*next;
 }						t_rooms;
+
+typedef struct			s_queue
+{
+	struct s_rooms		*room;
+	struct s_queue		*next;
+}						t_queue;
 
 typedef struct			s_output
 {
@@ -82,12 +62,19 @@ typedef struct	s_data
 	t_rooms		*E;
 	t_rooms		*rooms;
 	t_rooms		*last_room;
+	t_queue		*queue;
+	int			**board;
 	int			nb_rooms;
 	int			nb_ants;
 }				t_data;
 
+int				ft_connect(t_data *data);
+int				ft_path(t_data *data);
+int				ft_init_board(t_data *data);
 void			ft_add_line(char *line, t_data *data);
 void			ft_add_room(char **tab, t_data *data, int flag);
+void			ft_add_pipe(t_rooms *e, t_rooms *s);
+void			ft_add_queue(t_data *data, t_rooms *s);
 int				ft_read(t_data *data);
 int				ft_skip(char **line, t_data *data);
 int				ft_valid_int(char *str);
@@ -95,6 +82,7 @@ int				ft_valid_room(char **str, t_data *data, int flag);
 int				ft_valid_pipe(char **str, t_data *data);
 void			ft_free_string_array(char **tab);
 void			ft_error(t_data *data);
+void			ft_dequeue(t_data *data);
 /*
 void			ft_free_set(t_set *set);
 void			ft_set(t_set *set, t_set *game_set);

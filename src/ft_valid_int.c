@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 17:02:31 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/16 22:11:38 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/18 21:27:20 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_valid_int(char *str)
 		return (0);
 	if (len == 10 && (str[0] > '2' || str[1] > '1' || str[2] > '4' ||
 				str[3] > '7' || str[4] > '4' || str[5] > '8' || str[6] > '3' ||
-				str[7] > '6' || str[8] > '4' || str[9] > '7' ))
+				str[7] > '6' || str[8] > '4' || str[9] > '7'))
 		return (0);
 	return (1);
 }
@@ -68,7 +68,6 @@ int		ft_valid_name(char *str, t_data *data)
 			return (0);
 		ptr = ptr->next;
 	}
-
 	ptr = data->rooms;
 	return (1);
 }
@@ -76,25 +75,29 @@ int		ft_valid_name(char *str, t_data *data)
 int		ft_valid_pipe(char **str, t_data *data)
 {
 	t_rooms		*ptr;
-	int			e;
-	int			s;
+	t_rooms		*e;
+	t_rooms		*s;
 
-	e = 0;
-	s = 0;
+	e = NULL;
+	s = NULL;
 	if (str == NULL)
 		return (0);
 	ptr = data->rooms;
-//	printf("str[0] = %s,str[1] = %s\n", str[0], str[1]);
 	while (ptr)
 	{
 		if (!ft_strcmp(str[0], ptr->rm_name))
-			e = 1;
+			e = ptr;
 		if (!ft_strcmp(str[1], ptr->rm_name))
-			s = 1;
+			s = ptr;
 		ptr = ptr->next;
 	}
-//	printf("e = %d, s = %d\n", e, s);
-	return (e == 1 && s == 1);
+	if (e != NULL && s != NULL && e != s)// && e->rm_index < s->rm_index)i
+	{
+		ft_add_pipe(e, s);
+//	else if (e != NULL && s != NULL && e != s && e->rm_index > s->rm_index)
+		ft_add_pipe(s, e);
+	}
+	return (e != NULL && s != NULL);
 }
 
 int		ft_valid_room(char **tab, t_data *data, int flag)
@@ -103,7 +106,8 @@ int		ft_valid_room(char **tab, t_data *data, int flag)
 
 	ptr = data->rooms;
 	(void)flag;
-	if (!ft_valid_name(*tab, data) || !ft_valid_coord(tab[1]) || !ft_valid_coord(tab[2]))
+	if (!ft_valid_name(*tab, data) || !ft_valid_coord(tab[1])
+			|| !ft_valid_coord(tab[2]))
 		return (0);
 	while (ptr)
 	{
@@ -111,6 +115,6 @@ int		ft_valid_room(char **tab, t_data *data, int flag)
 			return (0);
 		ptr = ptr->next;
 	}
-	ft_add_room(tab,  data, flag);
+	ft_add_room(tab, data, flag);
 	return (1);
 }
