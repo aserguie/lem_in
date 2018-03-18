@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:13:33 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/18 21:24:08 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/18 21:37:45 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,15 @@ int		ft_read(t_data *data)
 		ft_error(data);
 		return (-1);
 	}
-	printf("------ GOT ANTS ------\n");
+	printf("------------ GOT ANTS\n");
+	printf("%d ant(s)\n", data->nb_ants);
 	if (get_rooms(&line, data) < 0 || !ft_connect(data))
 	{
 		ft_error(data);
 		return (-1);
 	}
-	printf("------ GOT ROOMS ------\n");
-	printf("%d\n\n", data->nb_rooms);
+	printf("------------ GOT ROOMS\n");
+	printf("%d rooms\t", data->nb_rooms);
 	printf("start = %s\t", data->S->rm_name);
 	printf("end = %s\n", data->E->rm_name);
 	if (get_pipes(&line, data) < 0)
@@ -146,11 +147,12 @@ int		ft_read(t_data *data)
 		ft_error(data);
 		return (-1);
 	}
-	printf("------ GOT PIPES ------\n");
+	printf("------------ GOT PIPES\n");
 	if (!ft_path(data))
 	{
 		ft_error(data);
 		return (-1);
 	}
+	printf("------------ GOT PATH\n");
 	return (1);
 }
