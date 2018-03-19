@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:21:12 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/18 21:30:58 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/19 23:47:25 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	ft_init(t_data *data)
 	data->last_room = NULL;
 	data->nb_rooms = 0;
 	data->nb_ants = 0;
+	data->max = 0;
 	data->S = NULL;
 	data->E = NULL;
 	data->queue = NULL;
 	data->board = NULL;
+	data->paths = NULL;
 }
 
 void	ft_free_board(t_data *data)
@@ -56,6 +58,20 @@ void	ft_free_output(t_output *output)
 	}
 }
 
+void	ft_free_pipes(t_pipe *pipe)
+{
+	t_pipe *ptr;
+
+	ptr = NULL;
+	while (pipe != NULL)
+	{
+		ptr = pipe;
+//		free(pipe->to);
+		pipe = pipe->next;
+		free(ptr);
+	}
+}
+
 void	ft_free_rooms(t_rooms *room)
 {
 	t_rooms *ptr;
@@ -67,6 +83,7 @@ void	ft_free_rooms(t_rooms *room)
 		free(room->rm_name);
 		free(room->x);
 		free(room->y);
+		ft_free_pipes(room->pipe);
 		room = room->next;
 		free(ptr);
 	}
@@ -126,7 +143,7 @@ int main(int ac, char **av)
 			j = 0;
 			while (j <= data.nb_rooms)
 			{
-				printf("%d\t", data.board[i][j]);
+//				printf("%d\t", data.board[i][j]);
 				j++;
 			}
 			printf("\n");
@@ -138,7 +155,14 @@ int main(int ac, char **av)
 	return(0);
 }
 
-// Attention segfault si mon fichier finit par un newlne !! (verifier aussi avec et sans EOF...)
+//Supprimer board et tout ce aui va avec si je ne m'en sers pas au final
+
+//Attention quand je trouve un path je me ballade vraiment dans les pipes alors
+//que je devrais simplement changer l'adresse pointee du coup je peux plus free a la fin...
+
+// Attention quand je compile avec f_sanitize il ya des erreurs(tester avec fsani dans le makefile, puis dans celui de la libft puis dans les deux)
+
+// Attention segfault si mon fichier finit par un newlne !! (verifier aussi avec et sans \n,  EOF...)
 //
 //  Comment gerer si il ya plusieurs connexions entre deux salles?
 //

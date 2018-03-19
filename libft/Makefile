@@ -6,7 +6,7 @@
 #    By: aserguie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/14 16:16:13 by aserguie          #+#    #+#              #
-#    Updated: 2018/03/16 19:51:56 by aserguie         ###   ########.fr        #
+#    Updated: 2018/03/19 23:49:29 by aserguie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,28 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra #-fsanitize=address
 NAME=libft.a
 SRC= ft_atoi.c \
+	 ft_attr_id.c \
+	 ft_attr_ux.c \
+	 ft_clone.c \
+	 ft_conv.c \
+	 ft_fill.c \
+	 ft_is_pre.c \
+	 ft_itoa_base.c \
+	 ft_min.c \
+	 ft_mod_id.c \
+	 ft_mod_id2.c \
+	 ft_mod_uns.c \
+	 ft_mod_uns2.c \
+	 ft_nega.c \
+	 ft_parsing.c \
+	 ft_percent.c \
+	 ft_pointer.c \
+	 ft_printf.c \
+	 ft_putarg.c \
+	 ft_string.c \
+	 ft_strnlen.c \
+	 ft_upper.c \
+	 ft_zero.c \
 	 ft_bzero.c \
 	 ft_isalnum.c \
 	 ft_isalpha.c \
@@ -79,7 +101,7 @@ OBJ_DIR = ./obj/
 
 OBJ= $(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
 
-HEADERS = ./inc/libft.h
+INC_DIR = ./inc/
 
 all:	$(NAME)
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 17:30:19 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/14 14:57:13 by aserguie         ###   ########.fr       */
+/*   Created: 2017/10/20 16:06:24 by aserguie          #+#    #+#             */
+/*   Updated: 2018/03/19 23:41:02 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void	ft_putstr(char const *str)
 {
 	int		i;
-	char	*s;
 
 	i = 0;
-	s = (char *)str;
-	while (str[i] != '\0')
+	if (str)
 	{
-		ft_putchar(s[i]);
-		i++;
+		while (str[i] != '\0')
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
 	}
 }

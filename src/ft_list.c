@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 15:51:45 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/18 21:18:44 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/19 20:54:22 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_rooms		*ft_new_room(char **tab, t_data *data, int flag)
 	new->from = NULL;
 	new->pipe = NULL;
 	new->next = NULL;
+	new->ant = 0;
 	data->nb_rooms++;
 	return (new);
 }

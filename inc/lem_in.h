@@ -6,12 +6,12 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:27:22 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/18 19:54:14 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/19 20:29:30 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef LEM_IN_H
+# define LEM_IN_H
 # define min(a,b) (a < b ? a : b)
 
 # include <stdlib.h>
@@ -29,6 +29,7 @@ typedef struct			s_pipe
 
 typedef struct			s_rooms
 {
+	int					ant;
 	int					S;
 	int					E;
 	char				*x;
@@ -63,14 +64,18 @@ typedef struct	s_data
 	t_rooms		*rooms;
 	t_rooms		*last_room;
 	t_queue		*queue;
-	int			**board;
+	t_queue		**paths;
+	t_rooms		**board;
+	int			max;
 	int			nb_rooms;
 	int			nb_ants;
 }				t_data;
 
+void			ft_print_answer(t_data *data);
+int				ft_lst_len(t_pipe *lst);
 int				ft_connect(t_data *data);
 int				ft_path(t_data *data);
-int				ft_init_board(t_data *data);
+int				ft_init_board(t_data *data, int nth_path, int nth_len);
 void			ft_add_line(char *line, t_data *data);
 void			ft_add_room(char **tab, t_data *data, int flag);
 void			ft_add_pipe(t_rooms *e, t_rooms *s);
@@ -82,7 +87,7 @@ int				ft_valid_room(char **str, t_data *data, int flag);
 int				ft_valid_pipe(char **str, t_data *data);
 void			ft_free_string_array(char **tab);
 void			ft_error(t_data *data);
-void			ft_dequeue(t_data *data);
+void			ft_free_queue(t_queue *queue);
 /*
 void			ft_free_set(t_set *set);
 void			ft_set(t_set *set, t_set *game_set);

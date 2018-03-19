@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:59:05 by aserguie          #+#    #+#             */
-/*   Updated: 2018/02/08 16:39:49 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/19 23:33:49 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "ft_printf.h"
 # define BUFF_SIZE 2
 
 typedef	struct	s_list
@@ -72,6 +73,7 @@ char			*ft_strmap(char const *s, char (*f)(char));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
+int				ft_strnlen(const char *str, char c);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
