@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 18:02:58 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/19 21:13:02 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/19 23:58:52 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		ft_find_path(t_data *data)
 				if (ptr->room->pipe->to == data->E)
 					return (1);
 			}
-			free(pipe_ptr);
 			ptr->room->pipe = ptr->room->pipe->next;
+			ft_memdel((void **)&pipe_ptr);
 		}
 		ptr = ptr->next;
 	}
