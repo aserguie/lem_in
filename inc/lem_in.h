@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:27:22 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 02:59:03 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 14:57:45 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ int				ft_lst_len(t_pipe *lst);
 int				ft_connect(t_data *data);
 int				ft_path(t_data *data);
 int				ft_init_board(t_data *data, int nth_path, int nth_len);
-void			ft_add_line(char *line, t_data *data);
-void			ft_add_room(char **tab, t_data *data, int flag);
-void			ft_add_pipe(t_rooms *e, t_rooms *s);
-void			ft_add_queue(t_data *data, t_rooms *s);
+int				ft_add_line(char *line, t_data *data);
+int				ft_add_room(char **tab, t_data *data, int flag);
+int				ft_add_pipe(t_rooms *e, t_rooms *s);
+int				ft_add_queue(t_data *data, t_rooms *s);
 int				ft_read(t_data *data);
 int				ft_skip(char **line, t_data *data);
 int				ft_valid_int(char *str);

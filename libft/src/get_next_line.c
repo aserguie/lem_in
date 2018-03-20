@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 17:57:56 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 02:47:37 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:13:16 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int						get_next_line(const int fd, char **line)
 
 	tmp = NULL;
 	temp = NULL;
-	if (fd < 0 || !line || ft_pick_node(fd, &tmp, &node) <= 0)
-		return (-1);
+	if (line == FREE || fd < 0 || !line || ft_pick_node(fd, &tmp, &node) <= 0)
+		return ((line == FREE ? free_gnl_lst(&node) : -1));
 	while (!(ft_strchr(tmp->content, '\n')))
 	{
 		if ((ret = read(fd, buf, BUFF_SIZE)) == 0)

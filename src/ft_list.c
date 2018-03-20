@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 15:51:45 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 01:00:13 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 14:50:49 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,33 @@ t_rooms		*ft_new_room(char **tab, t_data *data, int flag)
 	return (new);
 }
 
-void		ft_add_room(char **tab, t_data *data, int flag)
+int		ft_add_room(char **tab, t_data *data, int flag)
 {
 	if (tab == NULL || data == NULL)
-		return ;
+		return (0);
 	if (flag == 1)
-		data->S = ft_new_room(tab, data, flag);
+	{
+		if ((data->S = ft_new_room(tab, data, flag)) == NULL)
+			return (0);
+	}
 	else if (flag == 2)
-		data->E = ft_new_room(tab, data, flag);
+	{
+		if ((data->E = ft_new_room(tab, data, flag)) == NULL)
+			return (0);
+	}
 	else if (data->rooms == NULL)
 	{
-		data->rooms = ft_new_room(tab, data, flag);
+		if ((data->rooms = ft_new_room(tab, data, flag)) == NULL)
+				return (0);
 		data->last_room = data->rooms;
 	}
 	else if (data->last_room != NULL)
 	{
-		data->last_room->next = ft_new_room(tab, data, flag);
+		if ((data->last_room->next = ft_new_room(tab, data, flag)) == NULL)
+		return (0);
 		data->last_room = data->last_room->next;
 	}
+	return (1);
 }
 
 t_output	*ft_new_line(char *line)
@@ -94,19 +103,21 @@ t_output	*ft_new_line(char *line)
 	return (new);
 }
 
-void		ft_add_line(char *line, t_data *data)
+int			ft_add_line(char *line, t_data *data)
 {
 	if (line == NULL || data == NULL)
-		return ;
+		return (0);
 	if (data->output == NULL)
 	{
-		data->output = ft_new_line(line);
+		if ((data->output = ft_new_line(line)) == NULL)
+			return (0);
 		data->last_line = data->output;
-		return ;
 	}
 	if (data->last_line != NULL)
 	{
-		data->last_line->next = ft_new_line(line);
+		if ((data->last_line->next = ft_new_line(line)) == NULL)
+			return (0);
 		data->last_line = data->last_line->next;
 	}
+	return (1);
 }

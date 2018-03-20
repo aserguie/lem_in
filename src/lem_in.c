@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:21:12 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/19 23:47:25 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:12:38 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	ft_free_output(t_output *output)
 	while (output != NULL)
 	{
 		ptr = output;
-		free(output->line);
+		ft_strdel(&(output->line));
 		output = output->next;
-		free(ptr);
+		ft_memdel((void**)&ptr);
 	}
 }
 
@@ -96,6 +96,7 @@ void	ft_free_data(t_data *data)
 		ft_free_board(data);
 		ft_free_output(data->output);
 		ft_free_rooms(data->rooms);
+		get_next_line(0, FREE);
 	}
 	//	free(data);
 }
@@ -103,6 +104,7 @@ void	ft_free_data(t_data *data)
 void	ft_error(t_data *data)
 {
 	ft_free_data(data);
+	get_next_line(0, FREE);
 	printf("ERROR\n");
 	exit (-1);
 }

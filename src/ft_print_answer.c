@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 20:27:41 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/19 23:47:59 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 15:30:51 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 void	ft_print_data(t_data *data)
 {
-	while (data->output)
+	t_output *ptr;
+
+	ptr = data->output;
+	while (ptr)
 	{
-		ft_printf("%s\n",data->output->line);
-		data->output = data->output->next;
+		ft_printf("%s\n", ptr->line);
+		ptr = ptr->next;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:13:33 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 02:25:43 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:31:27 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		get_ants(char **line, t_data *data)
 		ret = -1;
 	else
 		data->nb_ants = ft_atoi(tab[0]);
-	ft_free_string_array(tab);
 	ft_strdel(line);
+	ft_free_string_array(tab);
 	return (ret);
 }
 
