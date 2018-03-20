@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 17:57:56 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/14 14:57:01 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 02:47:37 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,16 @@ static	int				ft_pick_node(const int fd, t_block **tmp,
 	a = *tmp;
 	if (!b)
 		b = ft_new_fd("", fd);
+	if (!b)
+		return (0);
 	a = b;
 	while (a && (a->fd != fd))
 		a = a->next;
 	if (a == NULL)
 	{
 		a = ft_new_fd("", fd);
+		if (!a)
+			return (0);
 		a->next = b;
 		b = a;
 	}
@@ -89,7 +93,7 @@ int						get_next_line(const int fd, char **line)
 
 	tmp = NULL;
 	temp = NULL;
-	if (fd < 0 || !line || ft_pick_node(fd, &tmp, &node) == -1)
+	if (fd < 0 || !line || ft_pick_node(fd, &tmp, &node) <= 0)
 		return (-1);
 	while (!(ft_strchr(tmp->content, '\n')))
 	{

@@ -6,14 +6,13 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:27:22 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 01:59:44 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 02:59:03 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # define min(a,b) (a < b ? a : b)
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
