@@ -6,7 +6,7 @@
 #    By: aserguie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 14:27:31 by aserguie          #+#    #+#              #
-#    Updated: 2018/03/20 17:55:33 by aserguie         ###   ########.fr        #
+#    Updated: 2018/03/20 23:04:16 by aserguie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = lem_in
 
 CC = gcc
 
-FLAGS = -Werror -Wall -Wextra -fsanitize=address
+FLAGS = -Werror -Wall -Wextra #-fsanitize=address
 
 SRC = lem_in.c \
 	  ft_read.c \

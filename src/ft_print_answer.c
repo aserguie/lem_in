@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 20:27:41 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 18:52:18 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 19:17:55 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	ft_print_move(t_rooms *ptr)
 
 void	ft_print_answer(t_data *data)
 {
-	int empty;;
-	t_rooms *ptr;
+	int		empty;
+	t_rooms	*ptr;
 
 	empty = 0;
 	ft_print_data(data);
-	while (data->E->ant != data->nb_ants)
+	while (data->e->ant != data->nb_ants)
 	{
-		ptr = data->E;
-		while (ptr->from->ant == 0 && ptr->from != data->S)
+		ptr = data->e;
+		while (ptr->from->ant == 0 && ptr->from != data->s)
 			ptr = ptr->from;
 		while (ptr->from && ptr->ant < data->nb_ants)
 		{

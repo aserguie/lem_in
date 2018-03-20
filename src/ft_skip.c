@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:38:46 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 15:29:08 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 22:19:27 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int		ft_skip(char **line, t_data *data)
 		ft_strdel(line);
 		if ((ret = get_next_line(0, line)) <= 0)
 			return (ret);
+	}
+	if (ft_strlen(*line) == 0)
+	{
+		ft_strdel(line);
+		return (-1);
 	}
 	if (!ft_add_line(*line, data))
 		return (-1);

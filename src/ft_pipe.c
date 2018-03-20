@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:00:55 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 15:03:06 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 19:17:13 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,3 @@ void	ft_free_queue(t_queue *queue)
 		ft_memdel((void**)&ptr);
 	}
 }
-
-// Penser a liberer la queue,(est elle seulement utile?)

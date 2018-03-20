@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:27:22 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 18:55:22 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 19:39:18 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct			s_pipe
 typedef struct			s_rooms
 {
 	int					ant;
-	int					S;
-	int					E;
+	int					s;
+	int					e;
 	char				*x;
 	char				*y;
 	char				*rm_name;
@@ -49,41 +49,43 @@ typedef struct			s_queue
 typedef struct			s_output
 {
 	char				*line;
-	struct	s_output	*next;
+	struct s_output		*next;
 }						t_output;
 
-typedef struct	s_data
+typedef struct			s_data
 {
 
-	t_output	*output;
-	t_output	*last_line;
-	t_rooms		*S;
-	t_rooms		*E;
-	t_rooms		*rooms;
-	t_rooms		*last_room;
-	t_queue		*queue;
-	int			max;
-	int			nb_rooms;
-	int			nb_ants;
-}				t_data;
+	t_output			*output;
+	t_output			*last_line;
+	t_rooms				*s;
+	t_rooms				*e;
+	t_rooms				*rooms;
+	t_rooms				*last_room;
+	t_queue				*queue;
+	int					max;
+	int					nb_rooms;
+	int					nb_ants;
+}						t_data;
 
-int				ft_count_char(char *str, char c);
-void			ft_print_answer(t_data *data);
-int				ft_lst_len(t_pipe *lst);
-int				ft_connect(t_data *data);
-int				ft_path(t_data *data);
-int				ft_add_line(char *line, t_data *data);
-int				ft_add_room(char **tab, t_data *data, int flag);
-int				ft_add_pipe(t_rooms *e, t_rooms *s);
-int				ft_add_queue(t_data *data, t_rooms *s);
-int				ft_read(t_data *data);
-int				ft_skip(char **line, t_data *data);
-int				ft_valid_int(char *str);
-int				ft_valid_room(char **str, t_data *data, int flag);
-int				ft_valid_pipe(char **str, t_data *data);
-void			ft_free_string_array(char **tab);
-void			ft_error(t_data *data);
-void			ft_free_queue(t_queue *queue);
-void			ft_free_data(t_data *data);
-int				ft_mini(int a, int b);
+int						ft_get_ants(char **line, t_data *data);
+int						ft_get_rooms(char **line, t_data *data);
+int						ft_get_pipes(char **line, t_data *data);
+int						ft_count_char(char *str, char c);
+void					ft_print_answer(t_data *data);
+int						ft_lst_len(t_pipe *lst);
+int						ft_connect(t_data *data);
+int						ft_path(t_data *data);
+int						ft_add_line(char *line, t_data *data);
+int						ft_add_room(char **tab, t_data *data, int flag);
+int						ft_add_pipe(t_rooms *e, t_rooms *s);
+int						ft_add_queue(t_data *data, t_rooms *s);
+int						ft_skip(char **line, t_data *data);
+int						ft_valid_int(char *str);
+int						ft_valid_room(char **str, t_data *data, int flag);
+int						ft_valid_pipe(char **str, t_data *data);
+void					ft_free_string_array(char **tab);
+void					ft_error(t_data *data);
+void					ft_free_queue(t_queue *queue);
+void					ft_free_data(t_data *data);
+int						ft_mini(int a, int b);
 #endif

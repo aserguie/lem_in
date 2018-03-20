@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 18:02:58 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 18:56:33 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 19:04:18 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_find_path(t_data *data, t_queue *ptr)
 				ptr->room->pipe->to->from = ptr->room;
 				if (!ft_add_queue(data, ptr->room->pipe->to))
 					return (0);
-				if (ptr->room->pipe->to == data->E)
+				if (ptr->room->pipe->to == data->e)
 					return (1);
 			}
 			ptr->room->pipe = ptr->room->pipe->next;
@@ -44,10 +44,10 @@ int		ft_path(t_data *data)
 {
 	t_queue *ptr;
 
-	if ((data->max = ft_mini(ft_lst_len(data->S->pipe),
-					ft_lst_len(data->E->pipe))) == 0)
+	if ((data->max = ft_mini(ft_lst_len(data->s->pipe),
+					ft_lst_len(data->e->pipe))) == 0)
 		return (0);
-	if (!ft_add_queue(data, data->S))
+	if (!ft_add_queue(data, data->s))
 		return (0);
 	ptr = data->queue;
 	if (!ft_find_path(data, ptr))

@@ -6,12 +6,12 @@
 #    By: aserguie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/14 16:16:13 by aserguie          #+#    #+#              #
-#    Updated: 2018/03/20 17:00:52 by aserguie         ###   ########.fr        #
+#    Updated: 2018/03/20 23:04:28 by aserguie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -fsanitize=address
+CFLAGS=-Wall -Werror -Wextra #-fsanitize=address
 NAME=libft.a
 SRC= ft_atoi.c \
 	 ft_attr_id.c \

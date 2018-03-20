@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:59:05 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 16:09:22 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 20:09:07 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "ft_printf.h"
-# define BUFF_SIZE 2
+# define BUFF_SIZE 1000
 # define FREE (char**)1
 
 typedef	struct	s_list
