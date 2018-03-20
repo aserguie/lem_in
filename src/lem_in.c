@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:21:12 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 18:17:04 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:59:11 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_error(t_data *data)
 {
 	ft_free_data(data);
 	get_next_line(0, FREE);
-	ft_printf("ERROR\n");
+	ft_putstr("ERROR\n");
 	exit (-1);
 }
 
