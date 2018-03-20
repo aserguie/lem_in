@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 17:02:31 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/19 17:40:10 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 01:09:47 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_valid_name(char *str, t_data *data)
 
 	if (str == NULL)
 		return (0);
-	if (*str == 'L' || *str == '#' || *str == '\0')
+	if (*str == 'L' || *str == '#' || *str == '\0' || ft_strchr(str, '-'))
 		return (0);
 	ptr = data->rooms;
 	while (ptr)
@@ -99,7 +99,7 @@ int		ft_valid_pipe(char **str, t_data *data)
 //		printf ("and from %s to %s\n", e->rm_name, s->rm_name);
 		ft_add_pipe(s, e);
 	}
-	return (e != NULL && s != NULL);
+	return (e != NULL && s != NULL && e != s);
 }
 
 int		ft_valid_room(char **tab, t_data *data, int flag)

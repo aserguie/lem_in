@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 15:51:45 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/19 20:54:22 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 01:00:13 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@ int			ft_connect(t_data *data)
 	ptr->rm_index = 0;
 	data->rooms = ptr;
 	ptr = data->last_room;
-	ptr->next = data->E;
-	data->E->rm_index = ptr->rm_index + 1;
+	if (ptr != NULL)
+	{
+		ptr->next = data->E;
+		data->E->rm_index = ptr->rm_index + 1;
+	}
+	else
+		data->S->next = data->E;
 	data->last_room = data->E;
 	return (1);
 }

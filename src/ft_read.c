@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:13:33 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 00:12:09 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 02:25:43 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		get_ants(char **line, t_data *data)
 		return (-1);
 	if ((tab = ft_strsplit(*line, ' ')) == NULL)
 		ft_error(data);
-	if (*tab == NULL || *(tab + 1) != NULL)
+	if (*tab == NULL || *(tab + 1) != NULL || ft_strchr(*line, ' '))
 		ret = -1;
 	if (!ft_valid_int(*tab) || **tab == '-')
 		ret = -1;
@@ -66,12 +66,13 @@ int		get_rooms(char **line, t_data *data)
 	while (ret > 0 && flag >= 0)
 	{
 		if (flag)
-		{
 			ft_free_string_array(tab);
-		}
 		if (!line || (ret = ft_skip(line, data)) <= 0)
 			return (-1);
-		if ((tab = ft_strsplit(*line, ' ')) == NULL)
+//		printf("[%s]\n", *line);
+		if ((tab = ft_strsplit(*line, ' ')) == NULL || **line == ' '
+				|| (*line[0] == '#' && (ft_strchr(*line, ' ')))
+				|| ft_count_char(*line, ' ') > 2)
 			ft_error(data);
 		if (*tab && *tab[0] == '#' && !flag)
 			flag = ft_start_end(tab, data);
@@ -108,7 +109,8 @@ int		get_pipes(char **line, t_data *data)
 		{
 			if (*tab == NULL || *(tab + 1) == NULL || *(tab + 2) != NULL)
 				ret = 0;
-			else if (!ft_valid_pipe(tab, data))
+			else if (ft_strchr(*line, '-') != ft_strrchr(*line, '-')
+					|| !ft_valid_pipe(tab, data))
 				ret = -1;
 		}
 		ft_strdel(line);
@@ -143,7 +145,8 @@ int		ft_read(t_data *data)
 	printf("%d rooms\t", data->nb_rooms);
 	printf("start = %s\t", data->S->rm_name);
 	printf("end = %s\n", data->E->rm_name);
-	if (get_pipes(&line, data) < 0 || data->S->pipe == NULL || data->E->pipe == NULL)
+	if (get_pipes(&line, data) < 0 && (data->S->pipe == NULL
+				|| data->E->pipe == NULL))
 	{
 		ft_error(data);
 		return (-1);

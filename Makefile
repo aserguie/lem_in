@@ -6,7 +6,7 @@
 #    By: aserguie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 14:27:31 by aserguie          #+#    #+#              #
-#    Updated: 2018/03/19 23:59:24 by aserguie         ###   ########.fr        #
+#    Updated: 2018/03/20 02:30:22 by aserguie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = lem_in
 
 CC = gcc
 
-FLAGS = -Werror -Wall -Wextra #-fsanitize=address
+FLAGS = -Werror -Wall -Wextra -fsanitize=address
 
 SRC = lem_in.c \
 	  ft_read.c \
@@ -26,7 +26,8 @@ SRC = lem_in.c \
 	  ft_path.c \
 	  ft_pipe.c \
 	  ft_lst_len.c \
-	  ft_print_answer.c
+	  ft_print_answer.c \
+	  ft_count_char.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
 
