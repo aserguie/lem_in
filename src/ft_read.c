@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:13:33 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 16:31:27 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:55:56 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,13 @@ int		get_ants(char **line, t_data *data)
 int		ft_start_end(char **tab, t_data *data)
 {
 	if (tab == NULL)
-	{
-		printf("!tab \n");
 		return (-1);
-	}
 	else if ((!ft_strcmp(*tab, "##start") && (data->S || *(tab + 1) != NULL))
 			|| (!ft_strcmp(*tab, "##end") && (data->E || *(tab + 1) != NULL)))
-	{
-		printf("datas->S = %d, data->E = %d\n", data->S->rm_index,
-				data->E->rm_index);
 		return (-1);
-	}
 	else if (!ft_strcmp(*tab, "##start"))
 		return (1);
-	else //if (!ft_strcmp(*tab, "##end"))
+	else
 		return (2);
 }
 
@@ -69,7 +62,6 @@ int		get_rooms(char **line, t_data *data)
 			ft_free_string_array(tab);
 		if (!line || (ret = ft_skip(line, data)) <= 0)
 			return (-1);
-//		printf("[%s]\n", *line);
 		if ((tab = ft_strsplit(*line, ' ')) == NULL || **line == ' '
 				|| (*line[0] == '#' && (ft_strchr(*line, ' ')))
 				|| ft_count_char(*line, ' ') > 2)
@@ -92,7 +84,7 @@ int		get_rooms(char **line, t_data *data)
 	}
 	if (flag && !ret)
 		ft_free_string_array(tab);
-	return (min(ret, flag));
+	return (ft_mini(ret, flag));
 }
 
 int		get_pipes(char **line, t_data *data)
@@ -130,35 +122,14 @@ int		ft_read(t_data *data)
 
 	line = NULL;
 	if (get_ants(&line, data) < 0)
-	{
 		ft_error(data);
-		return (-1);
-	}
-	printf("------------ GOT ANTS\n");
-	printf("%d ant(s)\n", data->nb_ants);
 	if (get_rooms(&line, data) < 0 || !ft_connect(data))
-	{
 		ft_error(data);
-		return (-1);
-	}
-	printf("------------ GOT ROOMS\n");
-	printf("%d rooms\t", data->nb_rooms);
-	printf("start = %s\t", data->S->rm_name);
-	printf("end = %s\n", data->E->rm_name);
 	if (get_pipes(&line, data) < 0 && (data->S->pipe == NULL
 				|| data->E->pipe == NULL))
-	{
 		ft_error(data);
-		return (-1);
-	}
-//	get_pipes(&line, data);
-	printf("------------ GOT PIPES\n");
 	if (!ft_path(data))
-	{
 		ft_error(data);
-		return (-1);
-	}
-	printf("------------ GOT PATH\n");
 	ft_print_answer(data);
 	return (1);
 }

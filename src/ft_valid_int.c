@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 17:02:31 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 14:59:42 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:08:01 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,10 @@ int		ft_valid_pipe(char **str, t_data *data)
 			s = ptr;
 		ptr = ptr->next;
 	}
-	if (e != NULL && s != NULL && e != s)// && e->rm_index < s->rm_index)i
+	if (e != NULL && s != NULL && e != s)
 	{
-//		printf ("from %s to %s\n", e->rm_name, s->rm_name);
 		if (!ft_add_pipe(e, s))
 			return (0);
-//	else if (e != NULL && s != NULL && e != s && e->rm_index > s->rm_index)
-//		printf ("and from %s to %s\n", e->rm_name, s->rm_name);
 		if (!ft_add_pipe(s, e))
 			return (0);
 	}

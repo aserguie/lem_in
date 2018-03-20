@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 15:39:39 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/15 17:32:49 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:12:12 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_free_string_array(char **tab)
 			ft_strdel(&tab[i]);
 			i++;
 		}
-		free(tab);
-		tab = NULL;
+		ft_memdel((void**)&tab);
 	}
 }

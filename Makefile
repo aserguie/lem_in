@@ -6,7 +6,7 @@
 #    By: aserguie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 14:27:31 by aserguie          #+#    #+#              #
-#    Updated: 2018/03/20 17:00:57 by aserguie         ###   ########.fr        #
+#    Updated: 2018/03/20 17:55:33 by aserguie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ SRC = lem_in.c \
 	  ft_list.c \
 	  ft_valid_int.c \
 	  ft_skip.c \
-	  ft_board.c \
 	  ft_path.c \
 	  ft_pipe.c \
 	  ft_lst_len.c \
 	  ft_print_answer.c \
-	  ft_count_char.c
+	  ft_count_char.c \
+	  ft_free.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
 

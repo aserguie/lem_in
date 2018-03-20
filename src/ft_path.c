@@ -6,7 +6,7 @@
 /*   By: aserguie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 18:02:58 by aserguie          #+#    #+#             */
-/*   Updated: 2018/03/20 15:38:46 by aserguie         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:56:33 by aserguie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_path(t_data *data)
 {
 	t_queue *ptr;
 
-	if ((data->max = min(ft_lst_len(data->S->pipe),
+	if ((data->max = ft_mini(ft_lst_len(data->S->pipe),
 					ft_lst_len(data->E->pipe))) == 0)
 		return (0);
 	if (!ft_add_queue(data, data->S))
@@ -52,7 +52,7 @@ int		ft_path(t_data *data)
 	ptr = data->queue;
 	if (!ft_find_path(data, ptr))
 	{
-		ft_free_queue(data->queue);
+		ft_free_queue(ptr);
 		return (0);
 	}
 	ft_free_queue(ptr);
